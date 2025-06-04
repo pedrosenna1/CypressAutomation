@@ -3,7 +3,7 @@
 
 Funcionalidade: Login
 
-  Cenário: Login com credenciais válidas
+    Cenário: Login com credenciais válidas
         Dado que o usuário está na página de Signup/Login
         Quando preenche o campo de e-mail com um e-mail válido
         E preenche o campo de senha com a senha correta
@@ -11,7 +11,7 @@ Funcionalidade: Login
         Então uma mensagem de “Login realizado com sucesso” é exibida
         E o usuário é redirecionado para a página Home
 
-  Cenário: Login com senha inválida
+    Cenário: Login com senha inválida
         Dado que o usuário está na página de Signup/Login
         Quando preenche o campo de e-mail com um e-mail válido
         E preenche o campo de senha com uma senha incorreta
@@ -19,7 +19,7 @@ Funcionalidade: Login
         Então uma mensagem de “Your email or password is incorrect!” é exibida
         E o usuário não é redirecionado para a página Home
 
-  Cenário: Login com e-mail inválido
+    Cenário: Login com e-mail inválido
         Dado que o usuário está na página de Signup/Login
         Quando preenche o campo de e-mail com um e-mail não cadastrado
         E preenche o campo de senha com a senha correta
@@ -27,7 +27,7 @@ Funcionalidade: Login
         Então uma mensagem de “Your email or password is incorrect!” é exibida
         E o usuário não é redirecionado para a página Home
 
-  Cenário: Login com e-mail sem domínio
+    Cenário: Login com e-mail sem domínio
         Dado que o usuário está na página de Signup/Login
         Quando preenche o campo de e-mail com um e-mail sem domínio
         E preenche o campo de senha com a senha correta
@@ -35,7 +35,7 @@ Funcionalidade: Login
         Então uma mensagem de “Inclua um “@” no endereço de e-mail.” é exibida
         E o usuário não é redirecionado para a página Home
 
-  Cenário: Login com campos em branco
+    Cenário: Login com campos em branco
         Dado que o usuário está na página de Signup/Login
         Quando deixa o campo de e-mail em branco
         E deixa o campo de senha em branco
