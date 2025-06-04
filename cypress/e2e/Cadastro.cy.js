@@ -23,7 +23,7 @@ describe('Cadastro usuário', () => {
     cy.get(':nth-child(1) > b').should('contain','Account Information')
     })
 
-  it('Cadastro novo usuario com e-mail ainda não utilizado', () => {
+  it('Cadastro novo usuário com credenciais válidas', () => {
     //Arrange: configura o cenário
     cy.get('[data-qa="signup-name"]').type(nome)
     cy.get('[data-qa="signup-email"]').type(email)
@@ -73,7 +73,7 @@ describe('Cadastro usuário', () => {
     // Assert: verifica o resultado
     cy.get('[data-qa="signup-email"]').then($campo => {
       expect($campo[0].checkValidity()).to.be.false;
-      expect($campo[0].validationMessage).to.be.eq('Preencha este campo.')
+      expect($campo[0].validationMessage).to.be.eq('Please fill out this field.')
     })
 
     })
