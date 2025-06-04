@@ -8,12 +8,12 @@ describe('Login', () => {
   })
 
   it('Login com credenciais válidas', () => {
-    cy.Loginvalido()
+    cy.LoginValido()
     cy.get('[class="nav navbar-nav"]').children().eq(9).should('contain',' Logged in as ')
 
   })
 
-  it.only('Login com senha inválida', () => {
+  it('Login com senha inválida', () => {
     cy.get('[data-qa="login-email"]').type('pedrotjb13@hotmail.com')
     cy.get('[data-qa="login-password"]').type('1')
     cy.get('[data-qa="login-button"]').click()
