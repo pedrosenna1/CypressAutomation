@@ -1,8 +1,9 @@
 /// <reference types="cypress" />
 
 describe('Cadastro usuário', () => {
+  const timestamp = Date.now()
   const nome = 'Pedro'
-  const email = 'admin1234@yahoo.com.br'
+  const email = `admin+${timestamp}@gmail.com`
   const email_cadastrado = 'admin@admin.com'
   const senha = '123456'
 
@@ -67,6 +68,7 @@ describe('Cadastro usuário', () => {
     //Act: executa a ação
     cy.get('[data-qa="signup-name"]').type(nome)
     cy.get('[data-qa="signup-button"]').click()
+    cy.wait(1000)
 
     // Assert: verifica o resultado
     cy.get('[data-qa="signup-email"]').then($campo => {
