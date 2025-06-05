@@ -1,3 +1,5 @@
+
+
 describe('Login', () => {
   beforeEach(()=>{
     cy.visit('https://automationexercise.com/')
@@ -20,4 +22,36 @@ describe('Login', () => {
     cy.get('[action="/login"] > p').should('have.text','Your email or password is incorrect!')
 
   })
+
+  it('Login com e-mail inválido', () => {
+    cy.get('[data-qa="login-email"]').type('pedrotjb13564@hotmail.com')
+    cy.get('[data-qa="login-password"]').type('123456')
+    cy.get('[data-qa="login-button"]').click()
+    cy.get('[action="/login"] > p').should('have.text','Your email or password is incorrect!')
+
+  })
+
+  it('Login com e-mail sem domínio', () => {
+    cy.get('[data-qa="login-email"]').type("pedrotjb13")
+    cy.get('[data-qa="login-password"]').type('123456')
+    cy.get('[data-qa="login-button"]').click()
+    cy.get('[data-qa="login-email"]').then($campo => {
+      expect($campo[0].checkValidity()).to.be.false;
+      expect($campo[0].validationMessage).to.be.include('Inclua um "@" no endereço de email')
+
+    })
+
+  })
+
+  it('Login com campos em branco', () => {
+    cy.get('[data-qa="login-button"]').click()
+    cy.get('[data-qa="login-email"]').then($campo =>{
+      expect($campo[0].checkValidity()).to.be.false;
+      expect($campo[0].validationMessage).to.be.include('Preencha este campo')
+
+    })
+
+  })
+
+
 })
