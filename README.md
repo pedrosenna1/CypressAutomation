@@ -1,3 +1,6 @@
+# Objetivo
+
+Repositório de testes e2e com cypress e integração continua com github actions
 
 ## Casos de teste
 
