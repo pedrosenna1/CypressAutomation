@@ -37,7 +37,7 @@ describe('Login', () => {
     cy.get('[data-qa="login-button"]').click()
     cy.get('[data-qa="login-email"]').then($campo => {
       expect($campo[0].checkValidity()).to.be.false;
-      expect($campo[0].validationMessage).to.be.include('Inclua um "@" no endereço de email')
+      expect($campo[0].validationMessage).to.be.include('Please include  an "@ in the email adress')
 
     })
 
@@ -47,7 +47,7 @@ describe('Login', () => {
     cy.get('[data-qa="login-button"]').click()
     cy.get('[data-qa="login-email"]').then($campo =>{
       expect($campo[0].checkValidity()).to.be.false;
-      expect($campo[0].validationMessage).to.be.include('Preencha este campo')
+      expect($campo[0].validationMessage).to.be.include('Please fill out this field')
 
     })
 
