@@ -1,19 +1,19 @@
-name: Trigger Cypress Tests
+name: Run Cypress on Dispatch
 
 on:
-  push:
-    branches:
-      - master  # ou main, dependendo da sua branch
+  repository_dispatch:
+    types: [run-cypress-tests]
 
 jobs:
-  trigger-tests:
+  cypress:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Disparar testes no repositório Cypress
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.CYPRESS_PAT }}
-          repository: pedrosenna1/CypressAutomation
-          event-type: run-cypress-tests
+      - name: Checkout
+        uses: actions/checkout@v3
 
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress tests
+        run: npx cypress run
