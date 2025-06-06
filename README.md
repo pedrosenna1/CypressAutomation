@@ -84,7 +84,7 @@ Funcionalidade: Cadastro usuário
 		E uma mensagem de "Account Created!" é exibida
 
 Funcionalidade: Fale conosco
-	Cenário: Envio de mensagem de contato com sucesso
+    Cenário: Envio de mensagem de contato com sucesso
 		Dado que o usuario está na pagina de fale conosco (/contact_us)
 		Quando preenche os campos Name, Email, Subject, Message e escolhe um arquivo para ser enviado
 		E clica em submit
@@ -105,7 +105,7 @@ Funcionalidade: Produtos e detalhes do produto
         Então deve ser redirecionado para a página de produtos
         E deve ser possível visualizar o título "All Products"
 
-	Cenário: Visualização de detalhes do produto
+    Cenário: Visualização de detalhes do produto
 		Dado que o usuario está na página de Produtos
 		Quando clica em "View Product"
 		Então deve ser redirecionado para a página do produto
