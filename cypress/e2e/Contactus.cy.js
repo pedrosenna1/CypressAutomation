@@ -2,8 +2,6 @@ describe('Fale conosco', () => {
   beforeEach(()=>{
     cy.visit('https://automationexercise.com/')
     cy.url().should('eq','https://automationexercise.com/')
-    cy.get('[href="/login"]').click()
-    cy.get('[class="login-form"] > h2').should('have.text','Login to your account')
 
   })
 

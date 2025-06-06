@@ -82,3 +82,31 @@ Funcionalidade: Cadastro usuário
 		E clica no botão Create Account
 		Então o usuario é redirecionado para a página /account_created
 		E uma mensagem de "Account Created!" é exibida
+
+Funcionalidade: Fale conosco
+	Cenário: Envio de mensagem de contato com sucesso
+		Dado que o usuario está na pagina de fale conosco (/contact_us)
+		Quando preenche os campos Name, Email, Subject, Message e escolhe um arquivo para ser enviado
+		E clica em submit
+		E clica em OK na janela que se abre
+		Então uma mensagem de 'Success! Your details have been submitted successfully.' é exibida
+
+Funcionalidade: Acesso página test cases
+    Cenário: Acesso à página de test cases com êxito
+        Dado que o usuário está na home page
+        Quando clica no botão test cases
+        Então deve ser redirecionado para a pagina test cases
+        E deve ser possivel ver o titulo test cases
+
+Funcionalidade: Produtos e detalhes do produto
+    Cenário: Acesso à pagina de produtos
+        Dado que o usuário está na Home Page
+        Quando clica no botão "Products"
+        Então deve ser redirecionado para a página de produtos
+        E deve ser possível visualizar o título "All Products"
+
+	Cenário: Visualização de detalhes do produto
+		Dado que o usuario está na página de Produtos
+		Quando clica em "View Product"
+		Então deve ser redirecionado para a página do produto
+		E deve ser visivel os campos com Nome do produto, categoria, valor, disponibilidade, condição e marca
