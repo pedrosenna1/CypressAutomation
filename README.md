@@ -84,6 +84,7 @@ Funcionalidade: Cadastro usuário
 		E uma mensagem de "Account Created!" é exibida
 
 Funcionalidade: Fale conosco
+
     Cenário: Envio de mensagem de contato com sucesso
 		Dado que o usuario está na pagina de fale conosco (/contact_us)
 		Quando preenche os campos Name, Email, Subject, Message e escolhe um arquivo para ser enviado
@@ -92,6 +93,7 @@ Funcionalidade: Fale conosco
 		Então uma mensagem de 'Success! Your details have been submitted successfully.' é exibida
 
 Funcionalidade: Acesso página test cases
+
     Cenário: Acesso à página de test cases com êxito
         Dado que o usuário está na home page
         Quando clica no botão test cases
@@ -99,6 +101,7 @@ Funcionalidade: Acesso página test cases
         E deve ser possivel ver o titulo test cases
 
 Funcionalidade: Produtos e detalhes do produto
+
     Cenário: Acesso à pagina de produtos
         Dado que o usuário está na Home Page
         Quando clica no botão "Products"
