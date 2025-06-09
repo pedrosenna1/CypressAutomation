@@ -133,4 +133,4 @@ Funcionalidade: Adição de produtos ao carrinho
         Quando o usuário clica no botão "Products"
         E adiciona o primeiro produto ao carrinho
         E clica no botão "View Cart"
-        Então o produto deve estar no carrinho
+        Então o produto deve estar no carrinho.
