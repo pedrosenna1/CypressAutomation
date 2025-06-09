@@ -6,6 +6,7 @@ describe('Fale conosco', () => {
   })
 
   it('Envio de mensagem de contato com sucesso', () => {
+    //act
     cy.get('[class="nav navbar-nav"]').children().eq(7).click()
     cy.get('[data-qa="name"]').type('Pedro')
     cy.get('[data-qa="email"]').type('pedrotjb13@hotmail.com')
@@ -18,6 +19,7 @@ describe('Fale conosco', () => {
 
 
     })
+    //assert
     cy.get('.status').should('have.text','Success! Your details have been submitted successfully.')
 
   })

@@ -115,3 +115,22 @@ Funcionalidade: Produtos e detalhes do produto
 		Quando clica em "View Product"
 		Então deve ser redirecionado para a página do produto
 		E deve ser visivel os campos com Nome do produto, categoria, valor, disponibilidade, condição e marca
+
+Funcionalidade: Pesquisa de produtos
+
+    Cenário: Visualização apenas dos produtos pesquisados
+        Dado que o usuário acessa a página inicial do site
+        E clica no botão "Products"
+        Quando ele pesquisa por um nome de produto
+        Então todos os produtos relacionados à pesquisa devem ser visíveis
+
+Funcionalidade: Adição de produtos ao carrinho
+
+    Cenário: Adicionar dois produtos ao carrinho e validar informações
+
+        Dado que o usuário acessa o site 'http://automationexercise.com'
+        E visualiza a página inicial com sucesso
+        Quando o usuário clica no botão "Products"
+        E adiciona o primeiro produto ao carrinho
+        E clica no botão "View Cart"
+        Então o produto deve estar no carrinho

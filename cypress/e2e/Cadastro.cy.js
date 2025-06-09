@@ -17,9 +17,11 @@ describe('Cadastro usuário', () => {
   })
 
   it('Cadastro novo usuario com e-mail ainda não utilizado', () => {
+    //act
     cy.get('[data-qa="signup-name"]').type(nome)
     cy.get('[data-qa="signup-email"]').type(email)
     cy.get('[data-qa="signup-button"]').click()
+    //assert
     cy.get(':nth-child(1) > b').should('contain','Account Information')
     })
 
