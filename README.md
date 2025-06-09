@@ -127,7 +127,6 @@ Funcionalidade: Pesquisa de produtos
 Funcionalidade: Adição de produtos ao carrinho
 
     Cenário: Adicionar dois produtos ao carrinho e validar informações
-
         Dado que o usuário acessa o site 'http://automationexercise.com'
         E visualiza a página inicial com sucesso
         Quando o usuário clica no botão "Products"
