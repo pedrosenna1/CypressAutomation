@@ -146,15 +146,15 @@ Funcionalidade: Adição de produtos ao carrinho
 
 Funcionalidade: Finalização de Compra
 
-  Cenário: Finalizar compra de produto com sucesso
-    Dado que o usuário está na página de detalhes de um produto
-    Quando define a quantidade como 4 unidades
-    E adiciona o produto ao carrinho
-    E acessa o carrinho e prossegue para o checkout
-    E realiza login com credenciais válidas
-    E confirma os dados e prossegue com o checkout
-    E visualiza os dados de entrega e valores no carrinho
-    E preenche os dados de pagamento corretamente
-    E finaliza o pedido
-    Então deve visualizar a mensagem "Order Placed!"
-    E deve ser redirecionado ao clicar no botão de continuar
+    Cenário: Finalizar compra de produto com sucesso
+        Dado que o usuário está na página de detalhes de um produto
+        Quando define a quantidade como 4 unidades
+        E adiciona o produto ao carrinho
+        E acessa o carrinho e prossegue para o checkout
+        E realiza login com credenciais válidas
+        E confirma os dados e prossegue com o checkout
+        E visualiza os dados de entrega e valores no carrinho
+        E preenche os dados de pagamento corretamente
+        E finaliza o pedido
+        Então deve visualizar a mensagem "Order Placed!"
+        E deve ser redirecionado ao clicar no botão de continuar
