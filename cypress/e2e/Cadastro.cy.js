@@ -4,7 +4,7 @@ describe('Cadastro usuário', () => {
   const timestamp = Date.now()
   const nome = 'Pedro'
   const email = `admin+${timestamp}@gmail.com`
-  const email_cadastrado = 'admin@admin.com'
+  const emailCadastrado = 'admin@admin.com'
   const senha = '123456'
 
   beforeEach(()=>{
@@ -58,7 +58,7 @@ describe('Cadastro usuário', () => {
   it('Cadastro novo usuario com e-mail ja utilizado', () => {
     //Act: executa a ação
     cy.get('[data-qa="signup-name"]').type(nome)
-    cy.get('[data-qa="signup-email"]').type(email_cadastrado)
+    cy.get('[data-qa="signup-email"]').type(emailCadastrado)
     cy.get('[data-qa="signup-button"]').click()
 
     // Assert: verifica o resultado

@@ -126,10 +126,35 @@ Funcionalidade: Pesquisa de produtos
 
 Funcionalidade: Adição de produtos ao carrinho
 
-    Cenário: Adicionar dois produtos ao carrinho e validar informações
+    Cenário: Adicionar produto ao carrinho
         Dado que o usuário acessa o site 'http://automationexercise.com'
         E visualiza a página inicial com sucesso
         Quando o usuário clica no botão "Products"
         E adiciona o primeiro produto ao carrinho
         E clica no botão "View Cart"
         Então o produto deve estar no carrinho.
+
+    Cenário: Verificar a quantidade de produto no carrinho após adição múltipla
+        Dado que o usuário acessa a página inicial do site
+        E a página inicial é exibida com sucesso
+        Quando o usuário clica em "View Product" de um produto na home
+        E a página de detalhes do produto é exibida
+        E o usuário altera a quantidade para 4
+        E clica no botão "Add to cart"
+        E clica no botão "View Cart"
+        Então o carrinho deve exibir o produto com a quantidade igual a 4
+
+Funcionalidade: Finalização de Compra
+
+  Cenário: Finalizar compra de produto com sucesso
+    Dado que o usuário está na página de detalhes de um produto
+    Quando define a quantidade como 4 unidades
+    E adiciona o produto ao carrinho
+    E acessa o carrinho e prossegue para o checkout
+    E realiza login com credenciais válidas
+    E confirma os dados e prossegue com o checkout
+    E visualiza os dados de entrega e valores no carrinho
+    E preenche os dados de pagamento corretamente
+    E finaliza o pedido
+    Então deve visualizar a mensagem "Order Placed!"
+    E deve ser redirecionado ao clicar no botão de continuar

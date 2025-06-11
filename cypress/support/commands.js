@@ -28,7 +28,5 @@ Cypress.Commands.add('LoginValido',() => {
     cy.get('[data-qa="login-email"]').type('pedrotjb13@hotmail.com')
     cy.get('[data-qa="login-password"]').type('123456', {log: false})
     cy.get('[data-qa="login-button"]').click()
-
-
-
+    cy.get(':nth-child(10) > a').should('contain','Logged in')
 })
