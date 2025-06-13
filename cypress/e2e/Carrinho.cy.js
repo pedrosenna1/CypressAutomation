@@ -35,33 +35,9 @@ describe('Carrinho', () => {
   })
 
 
-  it.only('Realizar checkout', () => {
+  it('Realizar checkout com sucesso', () => {
     
-    //Act
-    cy.get('[href="/product_details/1"]').click()
-    cy.get('#quantity').clear().type(4)
-    cy.get('[type="button"]').click()
-    cy.get('u').click()
-    cy.get('[class="disabled"]').should('have.text','4')
-    cy.get('[class="btn btn-default check_out"]').should('have.text',"Proceed To Checkout").click()
-    cy.get('.modal-body > :nth-child(2) > a > u').click()
-    cy.LoginValido()
-    cy.get('.shop-menu > .nav > :nth-child(3) > a').click()
-    cy.get('[class="btn btn-default check_out"]').should('have.text',"Proceed To Checkout").click()
-    //Assert
-    cy.get('[href="/product_details/1"]').should('exist')
-    cy.get('[class="disabled"]').should('have.text','4')
-    cy.contains('Your delivery address').should('be.visible')
-    cy.get('.cart_price > p').invoke('text').then((valor)=>{
-        expect(valor).to.contain('500')
-
-    })
-    cy.get('[class="cart_total_price"]').invoke('text').then((total)=>{
-        expect(total).to.contain('2000')
-
-    })
-    cy.get('.form-control').type('texto')
-    cy.get(':nth-child(7) > .btn').click()
+    cy.ProcessoCheckout()
     cy.get('[data-qa="name-on-card"]').type('nome')
     cy.get('[data-qa="card-number"]').type('123456')
     cy.get('[data-qa="cvc"]').type('311')
@@ -76,6 +52,28 @@ describe('Carrinho', () => {
 
     
   })
+
+  it.only('Realizar checkout sem numero do cartão', () => {
+
+    cy.ProcessoCheckout()
+    cy.get('[data-qa="name-on-card"]').type('nome')
+    cy.get('[data-qa="cvc"]').type('311')
+    cy.get('[data-qa="expiry-month"]').type('11')
+    cy.get('[data-qa="expiry-year"]').type('2028')
+    cy.get('[data-qa="pay-button"]').click()
+    cy.get('[data-qa="card-number"]').then(($card) => {
+        expect($card[0].checkValidity()).to.be.false
+        expect($card[0].validationMessage).to.include('Preencha este campo')
+
+    })
+    cy.get('[href="/view_cart"]').click()
+    cy.get('[data-product-id="1"]').click()
+
+
+
+    
+  })
+
 
 
 

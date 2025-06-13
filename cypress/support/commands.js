@@ -30,3 +30,32 @@ Cypress.Commands.add('LoginValido',() => {
     cy.get('[data-qa="login-button"]').click()
     cy.get(':nth-child(10) > a').should('contain','Logged in')
 })
+
+Cypress.Commands.add('ProcessoCheckout', () =>{
+    cy.get('[href="/product_details/1"]').click()
+    cy.get('#quantity').clear().type(4)
+    cy.get('[type="button"]').click()
+    cy.get('u').click()
+    cy.get('[class="disabled"]').should('have.text','4')
+    cy.get('[class="btn btn-default check_out"]').should('have.text',"Proceed To Checkout").click()
+    cy.get('.modal-body > :nth-child(2) > a > u').click()
+    cy.LoginValido()
+    cy.get('.shop-menu > .nav > :nth-child(3) > a').click()
+    cy.get('[class="btn btn-default check_out"]').should('have.text',"Proceed To Checkout").click()
+    
+    cy.get('[href="/product_details/1"]').should('exist')
+    cy.get('[class="disabled"]').should('have.text','4')
+    cy.contains('Your delivery address').should('be.visible')
+    cy.get('.cart_price > p').invoke('text').then((valor)=>{
+        expect(valor).to.contain('500')
+
+    })
+    cy.get('[class="cart_total_price"]').invoke('text').then((total)=>{
+        expect(total).to.contain('2000')
+
+    })
+    cy.get('.form-control').type('texto')
+    cy.get(':nth-child(7) > .btn').click()
+
+
+})
