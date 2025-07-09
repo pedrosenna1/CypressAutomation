@@ -59,3 +59,22 @@ Cypress.Commands.add('ProcessoCheckout', () =>{
 
 
 })
+
+Cypress.Commands.add('cadastro', (senha, nome) => { 
+    cy.get('[data-qa="password"]').type(senha, {log: false})
+    cy.get('[data-qa="days"]').select('24')
+    cy.get('[data-qa="months"]').select('10')
+    cy.get('[data-qa="years"]').select('1991')
+    cy.get('[data-qa="first_name"]').type(nome)
+    cy.get('[data-qa="last_name"]').type('Silva')
+    cy.get('[data-qa="address"]').type('Rua Alvaro Cordeiro 90')
+    cy.get('[data-qa="country"]').select('Canada')
+    cy.get('#state').type('Rio de Janeiro')
+    cy.get('#city').type('Rio de Janeiro')
+    cy.get('#zipcode').type('21545450')
+    cy.get('#mobile_number').type('21983665474')
+    cy.get('[data-qa="create-account"]').click()
+
+
+
+ })
