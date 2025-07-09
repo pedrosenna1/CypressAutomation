@@ -1,21 +1,21 @@
-class cadastroUsuario{
-    typeNome(nome){
+class cadastroUsuario {
+    typeNome(nome) {
         cy.get('[data-qa="signup-name"]').type(nome)
     }
-    typeEmail(email){
+    typeEmail(email) {
         cy.get('[data-qa="signup-email"]').type(email)
 
     }
-    signupSubmit(){
+    signupSubmit() {
         cy.get('[data-qa="signup-button"]').click()
 
     }
 
-    assertPage(){
+    assertPage() {
 
         cy.get(':nth-child(1) > b').should('contain','Account Information')
     }
-    typeSenha(senha){
+    typeSenha(senha) {
         cy.get('[data-qa="password"]').type(senha, {log: false})
 
 
@@ -26,7 +26,12 @@ class cadastroUsuario{
 
     }
 
+    preencherFormularioSignup(nome,email){
+        this.typeNome(nome)
+        this.typeEmail(email)
+        this.signupSubmit()
 
+    }
 }
 
 export default cadastroUsuario
