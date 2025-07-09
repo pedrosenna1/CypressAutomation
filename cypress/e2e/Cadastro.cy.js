@@ -24,9 +24,7 @@ describe('Cadastro usuário', () => {
 
   it('Cadastro novo usuario com e-mail ainda não utilizado', () => {
     //act
-    cadastrarUsuario.typeNome(nome)
-    cadastrarUsuario.typeEmail(email)
-    cadastrarUsuario.signupSubmit()
+    cadastrarUsuario.preencherFormularioSignup(nome,email)
     //assert
     cadastrarUsuario.assertPage()
     })
