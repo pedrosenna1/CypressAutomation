@@ -21,6 +21,11 @@ class cadastroUsuario{
 
     }
 
+    typeEmailCadastrado(emailCadastrado){
+        cy.get('[data-qa="signup-email"]').type(emailCadastrado)
+
+    }
+
 
 }
 

@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 import cadastroUsuario from "../../pages/cadastroUsuario"
 import visitarPagina from "../../pages/visitarPagina"
+
+
 const visitPage = new visitarPagina
 const cadastrarUsuario = new cadastroUsuario
 
@@ -29,7 +31,7 @@ describe('Cadastro usuário', () => {
     cadastrarUsuario.assertPage()
     })
 
-  it.only('Cadastro novo usuário com credenciais válidas', () => {
+  it('Cadastro novo usuário com credenciais válidas', () => {
     //Arrange: configura o cenário
     cadastrarUsuario.typeNome(nome)
     cadastrarUsuario.typeEmail(email)
@@ -49,9 +51,9 @@ describe('Cadastro usuário', () => {
 
   it('Cadastro novo usuario com e-mail ja utilizado', () => {
     //Act: executa a ação
-    cy.get('[data-qa="signup-name"]').type(nome)
-    cy.get('[data-qa="signup-email"]').type(emailCadastrado)
-    cy.get('[data-qa="signup-button"]').click()
+    cadastrarUsuario.typeNome(nome)
+    cadastrarUsuario.typeEmailCadastrado(emailCadastrado)
+    cadastrarUsuario.signupSubmit()
 
     // Assert: verifica o resultado
     cy.contains('Email Address already exist!').should('be.visible')
@@ -60,17 +62,17 @@ describe('Cadastro usuário', () => {
 
   it('Cadastro novo usuario sem e-mail', () => {
     //Act: executa a ação
-    cy.get('[data-qa="signup-name"]').type(nome)
-    cy.get('[data-qa="signup-button"]').click()
+    cadastrarUsuario.typeNome(nome)
+    cadastrarUsuario.signupSubmit
     cy.wait(1000)
 
     // Assert: verifica o resultado
-    cy.get('[data-qa="signup-email"]').then($campo => {
+    cy.get('[data-qa="signup-email"]').then(($campo) => {
       expect($campo[0].checkValidity()).to.be.false;
       expect($campo[0].validationMessage).to.be.eq('Please fill out this field.')
     })
 
     })
-
+   
   
 })
