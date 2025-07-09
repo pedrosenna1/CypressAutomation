@@ -1,4 +1,8 @@
 /// <reference types="cypress" />
+import cadastroUsuario from "../../pages/cadastroUsuario"
+import visitarPagina from "../../pages/visitarPagina"
+const visitPage = new visitarPagina
+const cadastrarUsuario = new cadastroUsuario
 
 describe('Cadastro usuário', () => {
   const timestamp = Date.now()
@@ -8,44 +12,32 @@ describe('Cadastro usuário', () => {
   const senha = '123456'
 
   beforeEach(()=>{
-    cy.visit('https://automationexercise.com/')
-    cy.url().should('eq', 'https://automationexercise.com/')
-    cy.get('[href="/login"]').click()
-    cy.get('[class="signup-form"] > h2').should('have.text','New User Signup!')
+    visitPage.visit()
+    visitPage.assertUrl()
+    visitPage.submit()
+    visitPage.assertPage()
 
 
   })
 
   it('Cadastro novo usuario com e-mail ainda não utilizado', () => {
     //act
-    cy.get('[data-qa="signup-name"]').type(nome)
-    cy.get('[data-qa="signup-email"]').type(email)
-    cy.get('[data-qa="signup-button"]').click()
+    cadastrarUsuario.typeNome(nome)
+    cadastrarUsuario.typeEmail(email)
+    cadastrarUsuario.signupSubmit()
     //assert
-    cy.get(':nth-child(1) > b').should('contain','Account Information')
+    cadastrarUsuario.assertPage()
     })
 
-  it('Cadastro novo usuário com credenciais válidas', () => {
+  it.only('Cadastro novo usuário com credenciais válidas', () => {
     //Arrange: configura o cenário
-    cy.get('[data-qa="signup-name"]').type(nome)
-    cy.get('[data-qa="signup-email"]').type(email)
-    cy.get('[data-qa="signup-button"]').click()
-    cy.get(':nth-child(1) > b').should('contain','Account Information')
+    cadastrarUsuario.typeNome(nome)
+    cadastrarUsuario.typeEmail(email)
+    cadastrarUsuario.signupSubmit()
+    cadastrarUsuario.assertPage()
 
     //Act: executa a ação
-    cy.get('[data-qa="password"]').type(senha, {log: false})
-    cy.get('[data-qa="days"]').select('24')
-    cy.get('[data-qa="months"]').select('10')
-    cy.get('[data-qa="years"]').select('1991')
-    cy.get('[data-qa="first_name"]').type(nome)
-    cy.get('[data-qa="last_name"]').type('Silva')
-    cy.get('[data-qa="address"]').type('Rua Alvaro Cordeiro 90')
-    cy.get('[data-qa="country"]').select('Canada')
-    cy.get('#state').type('Rio de Janeiro')
-    cy.get('#city').type('Rio de Janeiro')
-    cy.get('#zipcode').type('21545450')
-    cy.get('#mobile_number').type('21983665474')
-    cy.get('[data-qa="create-account"]').click()
+    cy.cadastro(senha,nome)
 
 
     // Assert: verifica o resultado

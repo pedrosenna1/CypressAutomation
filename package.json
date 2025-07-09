@@ -1,11 +1,10 @@
 {
   "dependencies": {
-    "cypress": "^14.4.1"
+    "cypress": "^14.5.1"
   },
   "name": "cypressgit",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
